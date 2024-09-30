@@ -6,7 +6,6 @@
 - [IMPROVEMENT] Add overwrite required (breaking) param to addViewLoadingTime & usage telemetry. See [#2040][]
 - [FEATURE] Prevent "show password" features from revealing sensitive texts in Session Replay. See [#2050][]
 - [FEATURE] Add Fine-Grained Masking configuration options to Session Replay. See [#2043][]
-- [FEATURE] Prevent "show password" features from revealing sensitive texts. See [#2050][]
 
 # 2.17.0 / 11-09-2024
 
