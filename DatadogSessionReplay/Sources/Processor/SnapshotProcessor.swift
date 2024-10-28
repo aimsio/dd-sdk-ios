@@ -96,8 +96,7 @@ internal class SnapshotProcessor: SnapshotProcessing {
         var records: [SRRecord] = []
         // Create records for describing UI:
         if viewTreeSnapshot.context.applicationID != lastSnapshot?.context.applicationID ||
-            viewTreeSnapshot.context.sessionID != lastSnapshot?.context.sessionID ||
-            viewTreeSnapshot.context.viewID != lastSnapshot?.context.viewID {
+            viewTreeSnapshot.context.sessionID != lastSnapshot?.context.sessionID {
             // If RUM context ids have changed, new segment should be started.
             // Segment must always start with "meta" → "focus" → "full snapshot" records.
             records.append(recordsBuilder.createMetaRecord(from: viewTreeSnapshot))
@@ -119,7 +118,7 @@ internal class SnapshotProcessor: SnapshotProcessing {
                 .flatMap { records.append($0) }
             }
         } else {
-            telemetry.error("[SR] Unexpected flow in `Processor`: no previous wireframes and no previous RUM context")
+            // Initial snapshot
             records.append(recordsBuilder.createFullSnapshotRecord(from: viewTreeSnapshot, wireframes: wireframes))
         }
 
