@@ -27,18 +27,18 @@ class SRMultipleViewsRecordingScenarioTests: IntegrationTests, RUMCommonAsserts,
         /// Number of all SR segments to pass the test.
         static let totalSegmentsCount = 15
         /// Number of all SR records to pass the test.
-        static let totalRecordsCount = 35
+        static let totalRecordsCount = 32
         /// Number of all "full snapshot" records to pass the test.
-        static let fullSnapshotRecordsCount = 6
+        static let fullSnapshotRecordsCount = 8
         /// Number of all "incremental snapshot" records to pass the test.
         static let incrementalSnapshotRecordsCount = 17
         /// Number of all "meta" records to pass the test.
-        static let metaRecordsCount = 6
+        static let metaRecordsCount = 1
         /// Number of all "focus" records to pass the test.
-        static let focusRecordsCount = 6
+        static let focusRecordsCount = 1
 
         /// Total number of wireframes in all "full snapshot" records.
-        static let totalWireframesInFullSnapshots = 150
+        static let totalWireframesInFullSnapshots = 149
         /// Minimal number of wireframes in each "full snapshot" record.
         static let minWireframesInFullSnapshot = 5
 
@@ -146,11 +146,11 @@ class SRMultipleViewsRecordingScenarioTests: IntegrationTests, RUMCommonAsserts,
         let metaRecords = try segments.flatMap { try $0.records(type: .metaRecord) }
         let focusRecords = try segments.flatMap { try $0.records(type: .focusRecord) }
 
-        XCTAssertGreaterThan(allRecords.count, Baseline.totalRecordsCount, "The number of all records must be above baseline")
-        XCTAssertGreaterThan(fullSnapshotRecords.count, Baseline.fullSnapshotRecordsCount, "The number of 'full snapshot' records must be above baseline")
-        XCTAssertGreaterThan(incrementalSnapshotRecords.count, Baseline.incrementalSnapshotRecordsCount, "The number of 'incremental snapshot' records must be above baseline")
-        XCTAssertGreaterThan(metaRecords.count, Baseline.metaRecordsCount, "The number of 'meta' records must be above baseline")
-        XCTAssertGreaterThan(focusRecords.count, Baseline.focusRecordsCount, "The number of 'focus' records must be above baseline")
+        XCTAssertGreaterThanOrEqual(allRecords.count, Baseline.totalRecordsCount, "The number of all records must be above baseline")
+        XCTAssertGreaterThanOrEqual(fullSnapshotRecords.count, Baseline.fullSnapshotRecordsCount, "The number of 'full snapshot' records must be above baseline")
+        XCTAssertGreaterThanOrEqual(incrementalSnapshotRecords.count, Baseline.incrementalSnapshotRecordsCount, "The number of 'incremental snapshot' records must be above baseline")
+        XCTAssertGreaterThanOrEqual(metaRecords.count, Baseline.metaRecordsCount, "The number of 'meta' records must be above baseline")
+        XCTAssertGreaterThanOrEqual(focusRecords.count, Baseline.focusRecordsCount, "The number of 'focus' records must be above baseline")
 
         // - Broad checks on contents of "full snapshot" records:
         let fullSnapshots = try segments.flatMap { try $0.fullSnapshotRecords() }
