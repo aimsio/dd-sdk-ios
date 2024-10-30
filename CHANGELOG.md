@@ -2,6 +2,7 @@
 
 - [IMPROVEMENT] Support `clipsToBounds` in Session Replay. See [#2083][]
 - [IMPROVEMENT] Session Replay recording is event-triggered instead of scheduled. See [#2074]
+- [IMPROVEMENT] Session Replay recording is event-triggered instead of scheduled. See [#2074]****
 
 # 2.19.0 / 28-10-2024
 
