@@ -20,7 +20,7 @@ public enum DDSDKVerbosityLevel: Int {
 }
 
 @objc
-public enum DDLogLevel: Int {
+public enum DDSDKLogLevel: Int {
     case debug
     case info
     case notice
@@ -201,7 +201,7 @@ public class DDLoggerBuilder: NSObject {
     }
 
     @objc
-    public func set(datadogReportingThreshold: DDLogLevel) {
+    public func set(datadogReportingThreshold: DDSDKLogLevel) {
         switch datadogReportingThreshold {
         case .debug: _ = sdkBuilder.set(datadogReportingThreshold: .debug)
         case .info: _ = sdkBuilder.set(datadogReportingThreshold: .info)
