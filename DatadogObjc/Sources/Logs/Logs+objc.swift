@@ -18,7 +18,7 @@ public enum DDSDKVerbosityLevel: Int {
 }
 
 @objc
-public enum DDLogLevel: Int {
+public enum DDSDKLogLevel: Int {
     case debug
     case info
     case notice
@@ -179,9 +179,9 @@ public class DDLoggerConfiguration: NSObject {
     /// Note: this setting doesn't impact logs printed to the console if `printLogsToConsole(_:)`
     /// is used - all logs will be printed, no matter of their level.
     ///
-    /// `DDLogLevel.debug` by default
-    @objc public var remoteLogThreshold: DDLogLevel {
-        get { DDLogLevel(configuration.remoteLogThreshold) }
+    /// `DDSDKLogLevel.debug` by default
+    @objc public var remoteLogThreshold: DDSDKLogLevel {
+        get { DDSDKLogLevel(configuration.remoteLogThreshold) }
         set { configuration.remoteLogThreshold = newValue.swift }
     }
 
@@ -204,7 +204,7 @@ public class DDLoggerConfiguration: NSObject {
         bundleWithRumEnabled: Bool = true,
         bundleWithTraceEnabled: Bool = true,
         remoteSampleRate: SampleRate = .maxSampleRate,
-        remoteLogThreshold: DDLogLevel = .debug,
+        remoteLogThreshold: DDSDKLogLevel = .debug,
         printLogsToConsole: Bool = false
     ) {
         configuration = .init(
